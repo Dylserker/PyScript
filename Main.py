@@ -24,17 +24,13 @@ def git_push():
 
 
 def schedule_pushes():
-    # Clear previous schedule
     schedule.clear()
 
-    # Calculate random number of pushes for today (20-30)
     num_pushes = random.randint(20, 30)
 
-    # Calculate working hours (8am to 8pm)
     start_time = datetime.now().replace(hour=8, minute=0, second=0)
     end_time = datetime.now().replace(hour=20, minute=0, second=0)
 
-    # Generate random times for pushes
     for _ in range(num_pushes):
         random_minutes = random.randint(0, (end_time - start_time).seconds // 60)
         push_time = start_time + timedelta(minutes=random_minutes)
@@ -42,10 +38,8 @@ def schedule_pushes():
 
 
 def main():
-    # Initial schedule
     schedule_pushes()
 
-    # Refresh schedule daily
     schedule.every().day.at("00:01").do(schedule_pushes)
 
     while True:
