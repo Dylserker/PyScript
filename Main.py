@@ -7,7 +7,6 @@ import subprocess
 
 
 def make_dummy_change():
-    # Create a timestamp in the dummy file
     with open('dummy_file.txt', 'a') as f:
         f.write(f"Update at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
 
